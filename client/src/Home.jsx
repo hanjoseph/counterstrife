@@ -115,8 +115,7 @@ function Home({ photo, user }) {
         updateWin(userInfo);
         updateHighScore(userScoreEmail);
         alert('congrats YOU ARE THE winner');
-      } else {
-        // everyone else updates game tally
+      } else if (count > 0) {
         updateGamesPlayed(userInfo);
         updateHighScore(userScoreEmail);
       }
@@ -302,9 +301,12 @@ const CD = styled.p`
 `;
 
 const CDInner = styled.div`
-  width: 70%;
-  min-height: 500px;
-  border: .5px solid black;
+  width: 95vw;
+  max-width: 700px;
+  height: 90vh;
+  /* max-height: 700px; */
+  /* min-height: 500px; */
+  /* border: .5px solid black; */
   text-align: center;
   padding-bottom: 100px;
   display: flex;
@@ -319,7 +321,8 @@ const HomeDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 50%;
+  width: 95vw;
+  height: 80vh;
   max-width: 700px;
   height: auto;
   border: .5px solid black;

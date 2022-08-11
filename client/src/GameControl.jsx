@@ -3,13 +3,15 @@ import styled from 'styled-components';
 
 function GameControl({ start, socket, game }) {
   const toggle = () => {
-    if (game === 'normal') socket.emit('switchGame', 'madness');
+    if (game === 'normal') {
+      socket.emit('switchGame', 'madness')
+    };
     if (game === 'madness') socket.emit('switchGame', 'normal');
   };
 
   return (
     <BottomDiv>
-      <Button1 onClick={toggle}>{game.toUpperCase()}</Button1>
+      <Button1 onClick={toggle} game={game}>{game.toUpperCase()}</Button1>
       <Button1 onClick={start}>
         START
       </Button1>
@@ -31,7 +33,8 @@ const GameBar = styled.div`
 `;
 
 const Button1 = styled.button`
-  background: #e7e7e7;
+  /* background: #e7e7e7; */
+  background: ${(props) => (props.game === 'madness' ? '#ff3939' : '#e7e7e7')};
   opacity: 80%;
   width: 100px;
   height: 60px;
@@ -39,6 +42,7 @@ const Button1 = styled.button`
   border-radius: 5px;
   margin-right: 1%;
   letter-spacing: 1px;
+  transition: 0.3s;
   &:hover{
     opacity: 60%;
     cursor: pointer;

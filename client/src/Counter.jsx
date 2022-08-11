@@ -59,9 +59,10 @@ const Button1 = styled.button`
 `;
 
 const CounterInner = styled.div`
-  width: 70%;
+  width: 95vw;
+  max-width: 700px;
   min-height: 500px;
-  border: .5px solid black;
+  /* border: .5px solid black; */
   text-align: center;
   padding-top: 50px;
   display: flex;
@@ -73,7 +74,7 @@ const CounterInner = styled.div`
 `;
 
 const CounterContainer = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: grid;
   place-items: center;
