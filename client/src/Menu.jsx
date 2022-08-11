@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { parseISO } from 'date-fns';
 import Stats from './Stats';
+import About from './About';
 import getWinPerc from './lib/getWinPerc';
 
 function Menu({ showMenu, signOut }) {
   const [showStats, setShowStats] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
+  const [showAbout, setShowAbout] = useState(false);
 
   const getAllUsers = () => {
     axios.get('allusers')
@@ -21,6 +23,10 @@ function Menu({ showMenu, signOut }) {
     getAllUsers();
     setShowStats(true);
   };
+
+  const about = () => {
+    setShowAbout(true);
+  }
 
   const refresh = () => {
     window.location.reload();
@@ -42,9 +48,10 @@ function Menu({ showMenu, signOut }) {
   return (
     <MenuBar showMenu={showMenu}>
       <Inner><P showMenu={showMenu} onClick={handleClick}>STATS</P></Inner>
-      <Middle><P showMenu={showMenu} onClick={refresh}>HOME</P></Middle>
+      <Middle><P showMenu={showMenu} onClick={about}>ABOUT</P></Middle>
       <Inner><P showMenu={showMenu} onClick={signOut}>SIGN OUT</P></Inner>
       {showStats && <Stats allUsers={allUsers} setShowStats={setShowStats} sort={sort} setAllUsers={setAllUsers} />}
+      {showAbout && <About setShowAbout={setShowAbout} />}
     </MenuBar>
   );
 }
