@@ -40,7 +40,6 @@ const Button1 = styled.button`
     &:hover{
     opacity: 70%;
     cursor: pointer;
-
   }
 `;
 const LoginContainer = styled.div`

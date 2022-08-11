@@ -183,7 +183,7 @@ io.on('connection', (socket) => {
     clientScores = connectedClients;
     sendConnectedClients(socket);
     sendUpdatedScores(socket);
-  })
+  });
 
   socket.on('collectScores', (userData) => { // receives scores.
     clientScores[socket.id] = userData;

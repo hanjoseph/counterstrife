@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+
   "scripts": {
     "start": "webpack --mode=development --watch",
     "server-dev": "npx nodemon server/index.js",
