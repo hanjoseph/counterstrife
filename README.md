@@ -11,6 +11,6 @@ Mongoose
 Firebase
 
 ### Members
-Joe Han (Ratings Reviews)
+Joe Han
 
 ### Acknowledgements
