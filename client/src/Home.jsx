@@ -319,7 +319,7 @@ const HomeDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 70%;
+  width: 50%;
   max-width: 700px;
   height: auto;
   border: .5px solid black;
