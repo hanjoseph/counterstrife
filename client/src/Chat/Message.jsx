@@ -18,7 +18,7 @@ function Message({ message, user }) {
           />
           <MsgRight>
             <UserName>{`${message.username}`}</UserName>
-            <ChatBubble>{`${message.message}`}</ChatBubble>
+            <ChatBubble><P>{`${message.message}`}</P></ChatBubble>
           </MsgRight>
         </MessageTile>
       )}
@@ -61,12 +61,19 @@ const ChatBubble = styled.div`
   margin: .5%;
   margin-top: 1%;
   margin-left: .5em;
-  padding: .35em .5em .35em .5em;
+  padding: .35em .1em .35em .5em;
   width: auto;
   max-width: 90%;
+  height: auto;
   background: lightgrey;
   border-radius: 5px;
-  white-space: initial;
+  /* white-space: initial;
+  text-align: left; */
+`
+
+const P = styled.p`
+  margin: 0;
+  white-space: pre-line;
   text-align: left;
 `
 const MyBubble = styled.div`
@@ -78,7 +85,7 @@ const MyBubble = styled.div`
   max-width: 90%;
   background: #b39bff;
   border-radius: 5px;
-  white-space: initial;
+  white-space: pre-line;
   text-align: right;
 `
 

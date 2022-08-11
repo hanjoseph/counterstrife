@@ -29,6 +29,13 @@
   letter-spacing: -2px;
   cursor: default;
 }
+#about-title {
+  font-size: 40px;
+  font-family: FuturaBCO;
+  color: rgb(35, 0, 0);
+  letter-spacing: -1.5px;
+  cursor: default;
+}
 
 #subtitle {
   font-size: small;
