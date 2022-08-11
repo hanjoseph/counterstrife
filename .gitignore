@@ -1,0 +1,15 @@
+node_modules
+
+.DS_Store
+
+.env
+
+yarn.lock
+
+package-lock.json
+
+
+client/public/bundle.js
+
+
+firebase.js
