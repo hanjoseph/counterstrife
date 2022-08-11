@@ -1,6 +1,5 @@
-# FEC
-Front End Capstone project for HR RFE2205 Team Nixos
-![nix atelier](https://raw.githubusercontent.com/rfe-nixos/FEC/main/client/public/public/icons/nixatelier.png)
+# MVP
+36 hours to create some sort of app.
 
 ### Built With
 React
@@ -12,9 +11,6 @@ Mongoose
 Firebase
 
 ### Members
-Elizabeth Bivens-Tatum (Product Details)
 Joe Han (Ratings Reviews)
-Maria Hirai (Questions Answers)
-Ian Zuber (Related Items)
 
 ### Acknowledgements
