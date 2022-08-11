@@ -63,11 +63,11 @@ const ChatBubble = styled.div`
   margin-left: .5em;
   padding: .35em .5em .35em .5em;
   width: auto;
-  /* max-width: 100px; */
+  max-width: 90%;
   background: lightgrey;
   border-radius: 5px;
-  white-space: nowrap;
-  text-align: center;
+  white-space: initial;
+  text-align: left;
 `
 const MyBubble = styled.div`
   margin: .5%;
@@ -75,11 +75,11 @@ const MyBubble = styled.div`
   margin-left: .5em;
   padding: .35em .5em .35em .5em;
   width: auto;
-  /* max-width: 100px; */
+  max-width: 90%;
   background: #b39bff;
   border-radius: 5px;
-  white-space: nowrap;
-  text-align: center;
+  white-space: initial;
+  text-align: right;
 `
 
 const MsgRight = styled.div`

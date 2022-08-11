@@ -42,7 +42,7 @@ const HomeContainer = styled.div`
   display: grid;
   place-items: center;
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
   background-color: #ffffff;
 `;
 
@@ -53,7 +53,7 @@ const Spinner = styled.img`
 `;
 
 const LoadPage = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: grid;
   place-items: center;
@@ -72,8 +72,8 @@ const LoadContent = styled.div`
 `;
 
 const MainDiv = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;

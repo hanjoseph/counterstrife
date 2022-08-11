@@ -46,14 +46,16 @@ const LoginContainer = styled.div`
   display: grid;
   place-items: center;
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
   background-color: #ffffff;
 `;
 
 const LoginInnerContainer = styled.div`
   padding: 50px;
-  height: 50%;
-  width: 50%;
+  height: 70vh;
+  width: 70vw;
+  max-width: 500px;
+  max-height: 500px;
   text-align: center;
   background-color: white;
   border-radius: 10px;

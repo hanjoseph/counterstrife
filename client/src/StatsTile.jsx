@@ -28,7 +28,7 @@ function StatsTile({ user }) {
 export default StatsTile;
 
 const User = styled.div`
-  width: 99%;
+  width: 98%;
   font-size: 15px;
   display: flex;
   flex-direction: row;

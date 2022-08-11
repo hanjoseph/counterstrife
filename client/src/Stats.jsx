@@ -79,7 +79,7 @@ const Button1 = styled.button`
 `;
 
 const StatsHeader = styled.div`
-  width: 100%;
+  width: 98%;
   font-size: 15px;
   display: flex;
   flex-direction: row;
@@ -97,7 +97,7 @@ const P = styled.p`
 `;
 
 const UsersContainer = styled.div`
-  width: 90%;
+  width: 95%;
   height: 350px;
   overflow-y: auto;
   overflow-x: none;
@@ -125,8 +125,10 @@ const StyledInner = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 500px;
-  height: 500px;
+  max-width: 500px;
+  max-height: 500px;
+  width: 99vw;
+  height: 95vh;
   overflow-y: auto;
   overflow-x: hidden;
   background: white;

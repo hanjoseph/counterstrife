@@ -47,25 +47,26 @@ const Div = styled.div`
   width: 30%;
 `;
 const Left = styled(Div)`
-  margin-left: 20px;
+  margin-left: 2%;
   justify-content: flex-start;
 `;
 const P = styled.p`
   font-size: 15px;
   font-weight: bold;
   margin: 0;
-  margin-left: 20px;
+  margin-left: 2%;
 `;
 const Q = styled.p`
   font-size: 40px;
   font-weight: bold;
   margin: 0;
+  margin-left: 2%;
 `;
 const Img = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-left: 30px;
+  margin-left: 3%;
 `;
 
 const Button1 = styled.button`
