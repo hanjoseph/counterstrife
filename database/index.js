@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost/mvpgames');
+mongoose.connect(`mongodb://${process.env.DB_HOST}/mvpgames`);
 
 const db = mongoose.connection;
 
