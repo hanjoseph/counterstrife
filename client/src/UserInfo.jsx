@@ -151,8 +151,10 @@ const StyledInner = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 85vw;
-  height: 85vw;
+  width: 90vw;
+  height: 90vw;
+  max-width: 400px;
+  max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
   background: white;
