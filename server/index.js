@@ -201,6 +201,7 @@ io.on('connection', (socket) => {
       roomData.push(leftRoomMessage);
       sendUpdatedRoomData(socket);
       delete connectedClients[socket.id];
+      sendConnectedClients(socket);
     }
     clearInterval(interval);
   });
