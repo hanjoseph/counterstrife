@@ -114,7 +114,7 @@ function Home({ photo, user }) {
   // when game ends
 
   useEffect(() => {
-    if (!gameShowing && scoreShowing && winner.email.length > 0) {
+    if (!gameShowing && scoreShowing) {
       const userScoreEmail = { email: userInfo.email, score: count };
       // update high score for EVERYONe, if game is not madness.
       if (game !== 'madness') updateHighScore(userScoreEmail);
