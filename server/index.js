@@ -235,7 +235,7 @@ io.on('connection', (socket) => {
       // let indexOfLeaving = hostQueue.indexOf(socket.id);
       hostQueue.splice(hostQueue.indexOf(socket.id), 1);
       const newHost = hostQueue[0];
-      if (prevHost !== newHost) {
+      if (prevHost !== newHost && hostQueue.length > 0) {
         let newHostObj = connectedClients[newHost];
         const newHostMsg = {
           message: `${newHostObj.displayName} is the new host.`,
@@ -244,8 +244,8 @@ io.on('connection', (socket) => {
           timeStamp: new Date(),
         };
         roomData.push(newHostMsg);
-        sendUpdatedRoomData(socket);
       }
+      sendUpdatedRoomData(socket);
       console.log(hostQueue);
       sendUpdatedHost(socket);
       // send new host.
