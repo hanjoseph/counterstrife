@@ -107,9 +107,14 @@ function Home({ photo, user }) {
       .catch((err) => console.log('error', err));
   };
 
+  // when game ends
+
   useEffect(() => {
     if (!gameShowing && scoreShowing && winner?.length > 0) {
       const userScoreEmail = { email: userInfo.email, score: count };
+      // update high score for EVERYONe
+      // update win for winner, if there's more than 1 person in play.
+      // only update games played if your count is > 0
       if (winner === userInfo.email) {
         // winner updates win tally
         updateWin(userInfo);
