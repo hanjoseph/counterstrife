@@ -37,6 +37,7 @@ function Home({ photo, user }) {
   const [showUserModal, setShowUserModal] = useState(false);
   const [game, setGame] = useState('');
   const [showMenu, setShowMenu] = useState(false);
+  const [host, setHost] = useState({});
 
   const checkinUser = (user_obj) => {
     axios.post('/users', user_obj)
@@ -81,6 +82,9 @@ function Home({ photo, user }) {
     });
     socket.on('getGame', (data) => {
       setGame(data);
+    });
+    socket.on('getHost', (data) => {
+      setHost(data);
     });
   }, [socket]);
 

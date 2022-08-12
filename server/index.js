@@ -89,6 +89,7 @@ let connectedClients = {};
 let clientScores = {};
 let interval;
 let game = 'normal';
+const hostQueue = [];
 
 const sendUpdatedRoomData = (socket) => {
   socket.emit('getChatRoomData', roomData);
@@ -107,20 +108,29 @@ const sendConnectedClients = (socket) => {
 const sendUpdatedGame = (socket) => {
   socket.emit('getGame', game);
   socket.broadcast.emit('getGame', game);
-}
+};
+
+const sendUpdatedHost = (socket) => {
+  if (hostQueue.length > 0) {
+    const newHost = connectedClients[hostQueue[0]];
+    console.log(newHost.email, 'is thehost!');
+    socket.emit('getHost', newHost);
+    socket.broadcast.emit('getHost', newHost);
+  }
+};
 
 io.on('connection', (socket) => {
-
   io.emit('rooms', rooms);
   io.emit('getChatRoomData', roomData);
   // io.emit('getGame', game);
 
-
   socket.on('userEnteredRoom', (userData) => {
-    let temp = userData;
+    const temp = userData;
     temp.socket = socket.id;
     temp.count = 0;
     connectedClients[socket.id] = temp;
+    hostQueue.push(socket.id);
+    console.log(hostQueue);
     console.log('user', userData.displayName, 'has joined');
     // console.log(connectedClients);
     const enteredRoomMessage = {
@@ -130,9 +140,19 @@ io.on('connection', (socket) => {
       timeStamp: new Date(),
     };
     roomData.push(enteredRoomMessage);
+    if (hostQueue.length === 1) {
+      const newHostMsg = {
+        message: `${connectedClients[hostQueue[0]].displayName} is the new host.`,
+        username: '',
+        photoURL: connectedClients[hostQueue[0]].photoURL,
+        timeStamp: new Date(),
+      };
+      roomData.push(newHostMsg);
+    }
     sendUpdatedRoomData(socket);
     sendConnectedClients(socket);
     sendUpdatedGame(socket);
+    sendUpdatedHost(socket);
   });
 
   socket.on('SendMessage', (messageData) => {
@@ -143,9 +163,9 @@ io.on('connection', (socket) => {
   socket.on('gameStart', () => {
     io.emit('gameStart');
     clientScores = {};
-    let temp = {};
+    const temp = {};
     Object.values(connectedClients).forEach((client) => {
-      let temps = client;
+      const temps = client;
       temps.count = 0;
       temp[client.socket] = temps;
     });
@@ -175,7 +195,9 @@ io.on('connection', (socket) => {
 
   socket.on('click', (user) => {
     if (clientScores[socket.id] === undefined) {
-      clientScores[socket.id] = { displayName: user.displayName, count: 1, email: user.email, photoURL: user.photoURL };
+      clientScores[socket.id] = {
+        displayName: user.displayName, count: 1, email: user.email, photoURL: user.photoURL,
+      };
     } else {
       clientScores[socket.id].count++;
     }
@@ -208,6 +230,25 @@ io.on('connection', (socket) => {
         message: `${connectedClients[socket.id].displayName} has left the chat`, username: '', userID: 0, timeStamp: null,
       };
       roomData.push(leftRoomMessage);
+      // remove from host queue.
+      const prevHost = hostQueue[0];
+      // let indexOfLeaving = hostQueue.indexOf(socket.id);
+      hostQueue.splice(hostQueue.indexOf(socket.id), 1);
+      const newHost = hostQueue[0];
+      if (prevHost !== newHost) {
+        let newHostObj = connectedClients[newHost];
+        const newHostMsg = {
+          message: `${newHostObj.displayName} is the new host.`,
+          username: '',
+          photoURL: newHostObj.photoURL,
+          timeStamp: new Date(),
+        };
+        roomData.push(newHostMsg);
+        sendUpdatedRoomData(socket);
+      }
+      console.log(hostQueue);
+      sendUpdatedHost(socket);
+      // send new host.
       sendUpdatedRoomData(socket);
       delete connectedClients[socket.id];
       sendConnectedClients(socket);
