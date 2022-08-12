@@ -28,7 +28,7 @@ function Home({ photo, user }) {
   const [gameShowing, setGameShowing] = useState(false);
   const [count, setCount] = useState(0);
   const [scores, setScores] = useState([]);
-  const [winner, setWinner] = useState('');
+  const [winner, setWinner] = useState({});
   const [countdown, setCountdown] = useState(0);
   const [users, setUsers] = useState([]);
   const [scoreShowing, setScoreShowing] = useState(false);
@@ -110,25 +110,36 @@ function Home({ photo, user }) {
   // when game ends
 
   useEffect(() => {
-    if (!gameShowing && scoreShowing && winner?.length > 0) {
+    if (!gameShowing && scoreShowing && winner.email.length > 0) {
       const userScoreEmail = { email: userInfo.email, score: count };
       // update high score for EVERYONe
+      updateHighScore(userScoreEmail);
       // update win for winner, if there's more than 1 person in play.
-      // only update games played if your count is > 0
-      if (winner === userInfo.email) {
-        // winner updates win tally
-        updateWin(userInfo);
-        updateHighScore(userScoreEmail);
-        alert('congrats YOU ARE THE winner');
-      } else if (count > 0) {
-        updateGamesPlayed(userInfo);
-        updateHighScore(userScoreEmail);
+      if (scores.length > 1) {
+        if (winner.email === userInfo.email) {
+          updateWin(userInfo);
+          alert('congrats YOU are the winner');
+        } else if (count > 0) {
+          updateGamesPlayed(userInfo);
+        }
       }
+      // only update games played if your count is > 0
+      // if (winner === userInfo.email) {
+      //   // winner updates win tally
+      //   updateWin(userInfo);
+      //   updateHighScore(userScoreEmail);
+      //   alert('congrats YOU ARE THE winner');
+      // } else if (count > 0) {
+      //   updateGamesPlayed(userInfo);
+      //   updateHighScore(userScoreEmail);
+      // }
     }
   }, [gameShowing]);
 
   useEffect(() => {
-    setWinner(scores[0]?.email);
+    if (scores.length > 1) {
+      setWinner(scores[0]);
+    } // only set winner if more than 1 person.
   }, [scores]);
 
   useEffect(() => {
@@ -171,7 +182,7 @@ function Home({ photo, user }) {
     });
     setUsers(temp);
   };
-
+  // game control
   const start = () => {
     resetUsers();
     socket.emit('startcountdown');
@@ -181,10 +192,12 @@ function Home({ photo, user }) {
     }, 3000);
     setCount(0);
     setCountdown(3);
+    let time = 10000;
+    if (game === 'madness') time = 13000;
     setTimeout(() => {
-      console.log('game should end in 10');
+      console.log('game should end in', time / 1000);
       socket.emit('gameEnd');
-    }, 10000);
+    }, time);
   };
 
   const getUserInfo = (email) => {

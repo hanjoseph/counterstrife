@@ -153,8 +153,17 @@ io.on('connection', (socket) => {
     sendConnectedClients(socket);
     sendUpdatedScores(socket);
   });
-  socket.on('gameEnd', () => {
+  socket.on('gameEnd', (winner) => {
     io.emit('gameEnd');
+    // console.log(winner, 'is the winner');
+    // const winnerMessage = {
+    //   message: `${winner.displayName} is the winner!`,
+    //   username: '',
+    //   photoURL: winner.photoURL,
+    //   timeStamp: new Date(),
+    // };
+    // roomData.push(winnerMessage);
+    // sendUpdatedRoomData(socket);
     sendUpdatedScores(socket);
   });
 

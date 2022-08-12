@@ -39,7 +39,7 @@ const Img = styled.img`
   margin: 0.5px;
   border-radius: 50%;
   margin-right: 5px;
-  border: ${(props) => ((props.winner === props.user.email) ? 3 : 0)}px solid #efef15;
+  border: ${(props) => ((props.winner.email === props.user.email) ? 3 : 0)}px solid #efef15;
   &:hover {
     cursor: pointer;
     opacity: 70%;
