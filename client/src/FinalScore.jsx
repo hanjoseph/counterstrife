@@ -121,6 +121,7 @@ const ScoreContainer = styled.div`
   width: 96%;
   overflow-y: auto;
   align-items: center;
+  cursor: default;
 
   > button {
     margin-top: 3%;

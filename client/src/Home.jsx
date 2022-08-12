@@ -178,12 +178,11 @@ function Home({ photo, user }) {
   };
   const emails = [
     'central21@gmail.com',
-    // 'josephkhhan@gmail.com',
-    // 'joemelohan@gmail.com',
-    // 'joemelohan1@gmail.com',
+    'josephkhhan@gmail.com',
+    'joemelohan@gmail.com',
+    'joemelohan1@gmail.com',
   ];
   // game control
-
   const start = () => {
     if (userInfo.email === host.email || emails.indexOf(userInfo.email) !== -1 ) {  // only if you are the host. or if you are me :)
       resetUsers();
@@ -263,7 +262,7 @@ function Home({ photo, user }) {
     <HomeDiv>
       <Header user={user} photo={photo} signOut={signOut} showMenu={showMenu} setShowMenu={setShowMenu} />
       <Menu showMenu={showMenu} signOut={signOut} />
-      <Users users={users} getUserInfo={getUserInfo} winner={winner} />
+      <Users users={users} host={host} getUserInfo={getUserInfo} winner={winner} />
       {showUserModal
         && (<UserInfo userForModal={userForModal} setShowUserModal={setShowUserModal} />)}
       <ChatList
