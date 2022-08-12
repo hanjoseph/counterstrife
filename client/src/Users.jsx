@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-function Users({ users, getUserInfo, winner }) {
+function Users({ users, getUserInfo, winner, host }) {
   const handleClick = (e) => {
     const email = e.target.alt;
     getUserInfo(email); // sets which user to show on modal.
@@ -25,6 +25,7 @@ function Users({ users, getUserInfo, winner }) {
               onClick={handleClick}
               winner={winner}
               user={user}
+              host={host}
             />
           ))
         )}
@@ -39,7 +40,8 @@ const Img = styled.img`
   margin: 0.5px;
   border-radius: 50%;
   margin-right: 5px;
-  border: ${(props) => ((props.winner === props.user.email) ? 3 : 0)}px solid #efef15;
+  border: ${(props) => ((props.host.email === props.user.email) ? 3 : 0)}px solid #efef15;
+  /* border: ${(props) => ((props.host.email === props.user.email) ? 3 : 0)}px solid #5196f0; */
   &:hover {
     cursor: pointer;
     opacity: 70%;
@@ -72,6 +74,7 @@ const UsersBar = styled.div`
   justify-content: flex-start;
   align-items: center;
   cursor: default;
+  flex-wrap: wrap;
 `;
 
 export default Users;

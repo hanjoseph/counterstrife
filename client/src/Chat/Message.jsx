@@ -67,7 +67,8 @@ const ChatBubble = styled.div`
   height: auto;
   background: lightgrey;
   border-radius: 5px;
-  white-space: initial;
+  overflow-wrap: break-word;
+  /* white-space: initial; */
   text-align: left;
 `
 

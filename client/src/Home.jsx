@@ -28,7 +28,7 @@ function Home({ photo, user }) {
   const [gameShowing, setGameShowing] = useState(false);
   const [count, setCount] = useState(0);
   const [scores, setScores] = useState([]);
-  const [winner, setWinner] = useState('');
+  const [winner, setWinner] = useState({});
   const [countdown, setCountdown] = useState(0);
   const [users, setUsers] = useState([]);
   const [scoreShowing, setScoreShowing] = useState(false);
@@ -37,6 +37,7 @@ function Home({ photo, user }) {
   const [showUserModal, setShowUserModal] = useState(false);
   const [game, setGame] = useState('');
   const [showMenu, setShowMenu] = useState(false);
+  const [host, setHost] = useState({});
 
   const checkinUser = (user_obj) => {
     axios.post('/users', user_obj)
@@ -82,6 +83,9 @@ function Home({ photo, user }) {
     socket.on('getGame', (data) => {
       setGame(data);
     });
+    socket.on('getHost', (data) => {
+      setHost(data);
+    });
   }, [socket]);
 
   const updateWin = (user_obj) => {
@@ -107,23 +111,29 @@ function Home({ photo, user }) {
       .catch((err) => console.log('error', err));
   };
 
+  // when game ends
+
   useEffect(() => {
-    if (!gameShowing && scoreShowing && winner?.length > 0) {
+    if (!gameShowing && scoreShowing && winner.email.length > 0) {
       const userScoreEmail = { email: userInfo.email, score: count };
-      if (winner === userInfo.email) {
-        // winner updates win tally
-        updateWin(userInfo);
-        updateHighScore(userScoreEmail);
-        alert('congrats YOU ARE THE winner');
-      } else if (count > 0) {
-        updateGamesPlayed(userInfo);
-        updateHighScore(userScoreEmail);
+      // update high score for EVERYONe
+      updateHighScore(userScoreEmail);
+      // update win for winner, if there's more than 1 person in play.
+      if (scores.length > 1) {
+        if (winner.email === userInfo.email) {
+          updateWin(userInfo);
+          alert('congrats YOU are the winner');
+        } else if (count > 0) {
+          updateGamesPlayed(userInfo);
+        }
       }
     }
   }, [gameShowing]);
 
   useEffect(() => {
-    setWinner(scores[0]?.email);
+    if (scores.length > 1) {
+      setWinner(scores[0]);
+    } // only set winner if more than 1 person.
   }, [scores]);
 
   useEffect(() => {
@@ -166,20 +176,32 @@ function Home({ photo, user }) {
     });
     setUsers(temp);
   };
-
+  const emails = [
+    'central21@gmail.com',
+    'josephkhhan@gmail.com',
+    'joemelohan@gmail.com',
+    'joemelohan1@gmail.com',
+  ];
+  // game control
   const start = () => {
-    resetUsers();
-    socket.emit('startcountdown');
-    setTimeout(() => {
-      socket.emit('gameStart');
-      console.log('game starts in 3');
-    }, 3000);
-    setCount(0);
-    setCountdown(3);
-    setTimeout(() => {
-      console.log('game should end in 10');
-      socket.emit('gameEnd');
-    }, 10000);
+    if (userInfo.email === host.email || emails.indexOf(userInfo.email) !== -1 ) {  // only if you are the host. or if you are me :)
+      resetUsers();
+      socket.emit('startcountdown');
+      setTimeout(() => {
+        socket.emit('gameStart');
+        console.log('game starts in 3');
+      }, 3000);
+      setCount(0);
+      setCountdown(3);
+      let time = 10000;
+      if (game === 'madness') time = 13000;
+      setTimeout(() => {
+        console.log('game should end in', time / 1000);
+        socket.emit('gameEnd');
+      }, time);
+    } else {
+      alert('only the host can start the game.');
+    }
   };
 
   const getUserInfo = (email) => {
@@ -240,7 +262,7 @@ function Home({ photo, user }) {
     <HomeDiv>
       <Header user={user} photo={photo} signOut={signOut} showMenu={showMenu} setShowMenu={setShowMenu} />
       <Menu showMenu={showMenu} signOut={signOut} />
-      <Users users={users} getUserInfo={getUserInfo} winner={winner} />
+      <Users users={users} host={host} getUserInfo={getUserInfo} winner={winner} />
       {showUserModal
         && (<UserInfo userForModal={userForModal} setShowUserModal={setShowUserModal} />)}
       <ChatList

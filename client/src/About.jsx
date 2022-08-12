@@ -11,8 +11,16 @@ function About({ setShowAbout }) {
       <StyledInner>
         <h1 id="about-title">Counterstrife.</h1>
         <CD>
-          <P>may the fastest counter win.</P>
+          <Q><b>how to play:</b></Q>
+          <Q>NORMAL: 7 seconds, click your own, highest count wins.</Q>
+          <Q>MADNESS: 10 seconds, click yours to increment, others to decrement.</Q>
+          <br />
+          <Q><b>change log:</b></Q>
+          <Q>v1.1: added hosting. only host can start the game.</Q>
+          <Q>v1.01: added ABOUT, win only counts when 2 or more players</Q>
+          <Q>v1.0: launch</Q>
         </CD>
+        <P>may the fastest counter win.</P>
         <Button1 onClick={back}>back</Button1>
       </StyledInner>
     </StyledForm>
@@ -41,10 +49,19 @@ const Button1 = styled.button`
 const P = styled.p`
   margin: 0px;
   font-weight: 300;
+  text-align: left;
+`;
+const Q = styled.p`
+  margin: 0px;
+  font-size: small;
+  font-weight: 300;
+  text-align: left;
 `;
 
-const CD = styled.p`
-  text-align: center;
+const CD = styled.div`
+  text-align: left;
+  height: 150px;
+  overflow-y: auto;
 `;
 
 const CDContainer = styled.div`
