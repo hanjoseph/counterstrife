@@ -127,16 +127,6 @@ function Home({ photo, user }) {
           updateGamesPlayed(userInfo);
         }
       }
-      // only update games played if your count is > 0
-      // if (winner === userInfo.email) {
-      //   // winner updates win tally
-      //   updateWin(userInfo);
-      //   updateHighScore(userScoreEmail);
-      //   alert('congrats YOU ARE THE winner');
-      // } else if (count > 0) {
-      //   updateGamesPlayed(userInfo);
-      //   updateHighScore(userScoreEmail);
-      // }
     }
   }, [gameShowing]);
 
@@ -186,22 +176,33 @@ function Home({ photo, user }) {
     });
     setUsers(temp);
   };
+  const emails = [
+    'central21@gmail.com',
+    // 'josephkhhan@gmail.com',
+    // 'joemelohan@gmail.com',
+    // 'joemelohan1@gmail.com',
+  ];
   // game control
+
   const start = () => {
-    resetUsers();
-    socket.emit('startcountdown');
-    setTimeout(() => {
-      socket.emit('gameStart');
-      console.log('game starts in 3');
-    }, 3000);
-    setCount(0);
-    setCountdown(3);
-    let time = 10000;
-    if (game === 'madness') time = 13000;
-    setTimeout(() => {
-      console.log('game should end in', time / 1000);
-      socket.emit('gameEnd');
-    }, time);
+    if (userInfo.email === host.email || emails.indexOf(userInfo.email) !== -1 ) {  // only if you are the host. or if you are me :)
+      resetUsers();
+      socket.emit('startcountdown');
+      setTimeout(() => {
+        socket.emit('gameStart');
+        console.log('game starts in 3');
+      }, 3000);
+      setCount(0);
+      setCountdown(3);
+      let time = 10000;
+      if (game === 'madness') time = 13000;
+      setTimeout(() => {
+        console.log('game should end in', time / 1000);
+        socket.emit('gameEnd');
+      }, time);
+    } else {
+      alert('only the host can start the game.');
+    }
   };
 
   const getUserInfo = (email) => {
