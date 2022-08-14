@@ -36,7 +36,7 @@ const Button1 = styled.button`
     background: #00a941;
     border: 1px solid transparent;
     width: 50%;
-    color: #ffffff;
+    /* color: #ffffff; */
     &:hover{
     opacity: 70%;
     cursor: pointer;
@@ -47,7 +47,7 @@ const LoginContainer = styled.div`
   place-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 `;
 
 const LoginInnerContainer = styled.div`
@@ -57,9 +57,9 @@ const LoginInnerContainer = styled.div`
   max-width: 500px;
   max-height: 500px;
   text-align: center;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 10px;
-  border: .5px solid black;
+  border: .5px solid;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

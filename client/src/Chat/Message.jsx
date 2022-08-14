@@ -68,7 +68,7 @@ const UserJoinMsg = styled.div`
 `;
 
 const UserName = styled.div`
-  color: darkslategrey;
+  color: ${(props) => props.theme.msgusername};
   font-weight: 100px;
   margin-left: .5em;
 `;
@@ -93,7 +93,8 @@ const MyBubble = styled.div`
   padding: .35em .5em .35em .5em;
   width: auto;
   max-width: 90%;
-  background: #b39bff;
+  background: ${(props) => props.theme.hostring};
+  color: ${(props) => props.theme.msg};
   border-radius: 5px;
   white-space: pre-line;
   text-align: right;

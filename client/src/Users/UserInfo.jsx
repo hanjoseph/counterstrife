@@ -145,8 +145,8 @@ const StyledForm = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.2);
+  background-color: ${(props) => props.theme.bgmodal1};
+  background-color: ${(props) => props.theme.bgmodal2};
   animation-name: ${fadeIn};
   animation-duration: 0.5s;
 
@@ -164,7 +164,7 @@ const StyledInner = styled.div`
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
-  /* background: white; */
+  background: ${(props) => props.theme.background};
   border: .5px solid;
   border-radius: 10px;
   animation-name: ${fadeIn};

@@ -119,12 +119,8 @@ const StyledForm = styled.div`
   width: 100%;
   height: 100%;
   overflow: none;
-  /* background-color: rgb(0,0,0); */
   background-color: ${(props) => props.theme.bgmodal1};
   background-color: ${(props) => props.theme.bgmodal2};
-  /* background: white;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.2); */
   animation-name: ${fadeIn};
   animation-duration: 0.5s;
 `;

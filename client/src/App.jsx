@@ -25,12 +25,17 @@ function App() {
 
   if (loading) {
     return (
-      <LoadPage>
-        <LoadContent>
-          <p>LOADING</p>
-          <Spinner id="spinner" src="public/icons/spinner.gif" />
-        </LoadContent>
-      </LoadPage>
+      <ThemeProvider theme={themeMode}>
+        <>
+          <GlobalStyle />
+          <LoadPage>
+            <LoadContent>
+              <p>LOADING</p>
+              <Spinner id="spinner" src="public/icons/spinner.gif" />
+            </LoadContent>
+          </LoadPage>
+        </>
+      </ThemeProvider>
     );
   }
   return (
