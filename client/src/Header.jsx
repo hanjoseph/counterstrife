@@ -49,6 +49,8 @@ const Title = styled.div`
   margin-left: 2%;
   margin-top:2%;
   display: flex;
+  color: ${(props) => props.theme.title};
+  transition: 0.3s;
   align-items: bottom;
   &: hover{
     opacity: 70%;

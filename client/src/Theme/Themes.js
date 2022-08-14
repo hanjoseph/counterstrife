@@ -10,6 +10,7 @@ export const lightTheme = {
   msgusername: 'darkslategrey',
   hostring: '#b39bff',
   msg: 'darkslategrey',
+  title: 'black',
 };
 
 export const darkTheme = {
@@ -24,4 +25,5 @@ export const darkTheme = {
   msgusername: 'lightgrey',
   hostring: '#d4ff00',
   msg: 'darkslategrey',
+  title: 'gainsboro',
 };
