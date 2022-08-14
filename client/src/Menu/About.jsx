@@ -63,6 +63,8 @@ const CD = styled.div`
   text-align: left;
   height: 150px;
   overflow-y: auto;
+  overflow-x: auto;
+  margin-left: 2%;
 `;
 
 const fadeIn = keyframes`
