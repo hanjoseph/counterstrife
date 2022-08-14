@@ -120,8 +120,11 @@ const StyledForm = styled.div`
   height: 100%;
   overflow: none;
   /* background-color: rgb(0,0,0); */
-  background-color: ${(props) => props.theme.background};
-  background-color: ${(props) => props.theme.background}, .5;
+  background-color: ${(props) => props.theme.bgmodal1};
+  background-color: ${(props) => props.theme.bgmodal2};
+  /* background: white;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.2); */
   animation-name: ${fadeIn};
   animation-duration: 0.5s;
 `;
@@ -138,8 +141,8 @@ const StyledInner = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   /* background: white; */
-  background-color: ${(props) => props.theme.background}
-  opacity: 100;
+  background: ${(props) => props.theme.background};
+  opacity: 1;
   border: .5px solid;
   border-radius: 10px;
   animation-name: ${fadeIn};

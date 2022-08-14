@@ -39,7 +39,7 @@ const User = styled.div`
     opacity: 90%;
     border: .1px solid;
     cursor: pointer;
-    background: #efefef;
+    background: ${(props) => props.theme.highlight};
     transition: 0.3s;
   }
   margin-top: 1%;
