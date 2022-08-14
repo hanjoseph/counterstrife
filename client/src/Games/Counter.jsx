@@ -31,38 +31,18 @@ function Counter({
   );
 }
 
-const P = styled.p`
-  font-size: ${(props) => (props.count + 15)}px;
-  font-weight: bold;
-  color: grey;
-  padding: 0;
-  margin: 0;
-  position: relative;
-
-  z-index: 300;
-`;
-
 const InnerTop = styled.div`
   display: grid;
   width: 100%;
   height: auto;
   place-items: center;
   margin-bottom: 5%px;
-`
-
-const Button1 = styled.button`
-  width: 200px;
-  height: 100px;
-  padding: 3px;
-  font-size: 50px;
-  text-align: center;
 `;
 
 const CounterInner = styled.div`
   width: 95vw;
   max-width: 700px;
   min-height: 500px;
-  /* border: .5px solid black; */
   text-align: center;
   padding-top: 50px;
   display: flex;
@@ -78,7 +58,7 @@ const CounterContainer = styled.div`
   height: 100vh;
   display: grid;
   place-items: center;
-  background: white;
+  /* background: white; */
   z-index: 100;
 `;
 

@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from '@mui/material';
-import getGmailUsername from './lib/getGmailUsername';
+import getGmailUsername from '../lib/getGmailUsername';
 
 function MiniCounter({ owner, socket, clicker }) {
   const increment = () => {
-    // setCount(count + 1);
     socket.emit('clickmad', owner); // emits owner.
   };
 
@@ -69,14 +69,6 @@ const Img = styled.img`
   margin-left: 3%;
 `;
 
-const Button1 = styled.button`
-  width: 200px;
-  height: 100px;
-  padding: 3px;
-  font-size: 50px;
-  text-align: center;
-`;
-
 const CounterInner = styled.div`
   width: 96%;
   text-align: center;
@@ -85,7 +77,6 @@ const CounterInner = styled.div`
   justify-content: space-between;
   align-items: center;
   z-index:101;
-  border: ${(props) => (props.clicker.email === props.owner.email ? 2 : .3)}px solid black;
+  border: ${(props) => (props.clicker.email === props.owner.email ? 2 : 0.3)}px solid;
   margin-bottom: 2px;
 `;
-

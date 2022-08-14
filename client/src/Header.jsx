@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { Avatar } from '@mui/material';
 
 function Header({
-  user, photo, showMenu, setShowMenu,
+  user, photo, showMenu, setShowMenu, signOut,
 }) {
   const toggleMenu = () => {
     showMenu ? setShowMenu(false)
@@ -15,21 +16,13 @@ function Header({
       <Title onClick={toggleMenu}>Counterstrife.</Title>
       <HeaderRight>
         {photo?.length > 0
-        && <Avatar id="header-icon" onClick={toggleMenu} src={photo} alt={user?.displayName} referrerPolicy="no-referrer" />}
+        && <Avatar id="header-icon" onClick={signOut} src={photo} alt={user?.displayName} referrerPolicy="no-referrer" />}
       </HeaderRight>
     </HeaderContainer>
   );
 }
 
 export default Header;
-
-const P = styled.p`
-  font-weight: 200;
-  font-size: small;
-  margin-right: 1%;
-  /* margin-bottom: 2%; */
-
-`;
 
 const HeaderRight = styled.div`
   display: flex;
@@ -45,7 +38,7 @@ const HeaderContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: .5px solid black;
+  border-bottom: .5px solid;
   cursor: default;
 `;
 
@@ -56,19 +49,9 @@ const Title = styled.div`
   margin-left: 2%;
   margin-top:2%;
   display: flex;
+  color: ${(props) => props.theme.title};
+  transition: 0.3s;
   align-items: bottom;
-  &: hover{
-    opacity: 70%;
-    cursor: pointer;
-  }
-`;
-
-const Button1 = styled.button`
-  height: 50px;
-  width: 100px;
-  margin-top: 3%;
-  text-align: center;
-  font-size: 20px;
   &: hover{
     opacity: 70%;
     cursor: pointer;

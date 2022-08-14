@@ -4,9 +4,9 @@ import axios from 'axios';
 import { parseISO } from 'date-fns';
 import Stats from './Stats';
 import About from './About';
-import getWinPerc from './lib/getWinPerc';
+import getWinPerc from '../lib/getWinPerc';
 
-function Menu({ showMenu, signOut }) {
+function Menu({ showMenu, signOut, themeToggler }) {
   const [showStats, setShowStats] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
   const [showAbout, setShowAbout] = useState(false);
@@ -26,10 +26,6 @@ function Menu({ showMenu, signOut }) {
 
   const about = () => {
     setShowAbout(true);
-  }
-
-  const refresh = () => {
-    window.location.reload();
   };
 
   const sort = (sortMethod) => {
@@ -49,7 +45,7 @@ function Menu({ showMenu, signOut }) {
     <MenuBar showMenu={showMenu}>
       <Inner><P showMenu={showMenu} onClick={handleClick}>STATS</P></Inner>
       <Middle><P showMenu={showMenu} onClick={about}>ABOUT</P></Middle>
-      <Inner><P showMenu={showMenu} onClick={signOut}>SIGN OUT</P></Inner>
+      <Inner><P showMenu={showMenu} onClick={themeToggler}>THEME</P></Inner>
       {showStats && <Stats allUsers={allUsers} setShowStats={setShowStats} sort={sort} setAllUsers={setAllUsers} />}
       {showAbout && <About setShowAbout={setShowAbout} />}
     </MenuBar>
@@ -68,7 +64,7 @@ const P = styled.p`
     letter-spacing: 4px;
     transition: 0.3s;
   }
-  transition: 0.6s;
+  transition: 0.3s;
 `;
 const Inner = styled.div`
   width: 33.33%;
@@ -84,19 +80,18 @@ const Inner = styled.div`
 `;
 
 const Middle = styled(Inner)`
-  border-left: 0.5px solid black;
-  border-right: .5px solid black;
+  border-left: 0.5px solid;
+  border-right: .5px solid;
 `;
 
 const MenuBar = styled.div`
   height: ${(props) => (props.showMenu ? 35 : 0)}px;
   width: 100%;
-  /* border-top: .5px solid black; */
-  border-bottom: ${(props) => (props.showMenu ? 0.5 : 0)}px solid black;
+  border-bottom: ${(props) => (props.showMenu ? 0.5 : 0)}px solid;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   cursor: default;
-  transition: .5s;
+  transition: .2s;
 `;

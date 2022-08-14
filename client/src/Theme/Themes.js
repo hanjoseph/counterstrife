@@ -1,0 +1,31 @@
+export const lightTheme = {
+  body: 'white',
+  text: 'black',
+  border: '#242424',
+  background: 'white',
+  bgmodal1: 'rgb(0, 0, 0)',
+  bgmodal2: 'rgba(0, 0, 0, 0.2)',
+  chatbubble: 'lightgrey',
+  highlight: 'lightgrey',
+  msgusername: 'darkslategrey',
+  hostring: '#b39bff',
+  msg: 'darkslategrey',
+  title: 'black',
+  buttonbg: 'lightgrey',
+};
+
+export const darkTheme = {
+  body: '#242424',
+  text: 'gainsboro',
+  border: 'gainsboro',
+  background: '#242424',
+  bgmodal1: 'rgb(1, 1, 1)',
+  bgmodal2: 'rgba(1, 1, 1, 0.7)',
+  chatbubble: 'darkslategrey',
+  highlight: 'darkslategrey',
+  msgusername: 'lightgrey',
+  hostring: '#d4ff00',
+  msg: 'darkslategrey',
+  title: 'gainsboro',
+  buttonbg: 'lightgrey',
+};

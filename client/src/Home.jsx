@@ -8,22 +8,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
 import socketIOClient from 'socket.io-client';
-import { auth } from './firebase';
-import ChatList from './Chat/ChatList';
-import Counter from './Counter';
-import FinalScore from './FinalScore';
-import Users from './Users';
+import { auth } from './lib/firebase';
 import Header from './Header';
-import UserInfo from './UserInfo';
-import CounterMad from './CounterMad';
-import Menu from './Menu';
-import GameControl from './GameControl';
+import ChatList from './Chat/ChatList';
+import Menu from './Menu/Menu';
+import Counter from './Games/Counter';
+import CounterMad from './Games/CounterMad';
+import GameControl from './Games/GameControl';
+import FinalScore from './Games/FinalScore';
+import Users from './Users/Users';
+import UserInfo from './Users/UserInfo';
 
 const ENDPOINT = 'http://127.0.0.1:3000';
 
 const socket = socketIOClient(ENDPOINT);
 
-function Home({ photo, user }) {
+function Home({ photo, user, themeToggler }) {
   const [chatRoomData, setChatRoomData] = useState([]);
   const [gameShowing, setGameShowing] = useState(false);
   const [count, setCount] = useState(0);
@@ -36,7 +36,7 @@ function Home({ photo, user }) {
   const [userForModal, setUserForModal] = useState({});
   const [showUserModal, setShowUserModal] = useState(false);
   const [game, setGame] = useState('');
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [host, setHost] = useState({});
 
   const checkinUser = (user_obj) => {
@@ -260,8 +260,14 @@ function Home({ photo, user }) {
   }
   return (
     <HomeDiv>
-      <Header user={user} photo={photo} signOut={signOut} showMenu={showMenu} setShowMenu={setShowMenu} />
-      <Menu showMenu={showMenu} signOut={signOut} />
+      <Header
+        user={user}
+        photo={photo}
+        signOut={signOut}
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+      />
+      <Menu showMenu={showMenu} signOut={signOut} themeToggler={themeToggler} />
       <Users users={users} host={host} getUserInfo={getUserInfo} winner={winner} />
       {showUserModal
         && (<UserInfo userForModal={userForModal} setShowUserModal={setShowUserModal} />)}
@@ -269,6 +275,9 @@ function Home({ photo, user }) {
         chatRoomData={chatRoomData}
         user={user}
         socket={socket}
+        userForModal={userForModal}
+        setShowUserModal={setShowUserModal}
+        getUserInfo={getUserInfo}
       />
       <GameControl
         start={start}
@@ -282,27 +291,11 @@ function Home({ photo, user }) {
 
 export default Home;
 
-const Button1 = styled.button`
-  background: #e7e7e7;
-  opacity: 80%;
-  width: 60px;
-  height: 30px;
-  border: .5px solid black;
-  border-radius: 5px;
-  margin-right: 1%;
-  &:hover{
-    opacity: 60%;
-    cursor: pointer;
-    letter-spacing: 2px;
-    transition: 0.3s;
-  }
-`;
 const CDContainer = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
   place-items: center;
-  background: white;
   z-index: 100;
 `;
 
@@ -326,9 +319,6 @@ const CDInner = styled.div`
   width: 95vw;
   max-width: 700px;
   height: 90vh;
-  /* max-height: 700px; */
-  /* min-height: 500px; */
-  /* border: .5px solid black; */
   text-align: center;
   padding-bottom: 100px;
   display: flex;
@@ -347,6 +337,6 @@ const HomeDiv = styled.div`
   height: 80vh;
   max-width: 700px;
   height: auto;
-  border: .5px solid black;
+  border: .5px solid;
   border-radius: 5px;
 `;

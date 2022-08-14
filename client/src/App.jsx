@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from './firebase';
+import { auth } from './lib/firebase';
+import GlobalStyle from './Theme/GlobalStyle';
+import { lightTheme, darkTheme } from './Theme/Themes';
+import useDarkMode from './Theme/useDarkMode';
 import Login from './Login';
 import Home from './Home';
 
 function App() {
-  // const [showing, setShowing] = useState(false);
   const [user, loading] = useAuthState(auth);
   const [photo, setPhoto] = useState('');
+  const [theme, setTheme] = useDarkMode(); // custom hook!
+
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
 
   useEffect(() => {
     setPhoto(user?.photoURL);
@@ -16,25 +25,35 @@ function App() {
 
   if (loading) {
     return (
-      <LoadPage>
-        <LoadContent>
-          <p>LOADING</p>
-          <Spinner id="spinner" src="public/icons/spinner.gif" />
-        </LoadContent>
-      </LoadPage>
+      <ThemeProvider theme={themeMode}>
+        <>
+          <GlobalStyle />
+          <LoadPage>
+            <LoadContent>
+              <p>LOADING</p>
+              <Spinner id="spinner" src="public/icons/spinner.gif" />
+            </LoadContent>
+          </LoadPage>
+        </>
+      </ThemeProvider>
     );
   }
   return (
-    <MainDiv>
-      {!user ? (
-        <Login />
-      )
-        : (
-          <HomeContainer>
-            <Home photo={photo} user={user} />
-          </HomeContainer>
-        )}
-    </MainDiv>
+    <ThemeProvider theme={themeMode}>
+      <>
+        <GlobalStyle />
+        <MainDiv>
+          {!user ? (
+            <Login />
+          )
+            : (
+              <HomeContainer>
+                <Home photo={photo} user={user} themeToggler={themeToggler} />
+              </HomeContainer>
+            )}
+        </MainDiv>
+      </>
+    </ThemeProvider>
   );
 }
 
@@ -43,7 +62,7 @@ const HomeContainer = styled.div`
   place-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 `;
 
 const Spinner = styled.img`
@@ -57,7 +76,7 @@ const LoadPage = styled.div`
   height: 100vh;
   display: grid;
   place-items: center;
-  background: white;
+  /* background: white; */
   z-index: 100;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;

@@ -60,7 +60,7 @@ const Button = styled.button`
   opacity: ${(props) => (props.message.length > 0 ? 80 : 0)}%;
   width: 60px;
   height: 30px;
-  border: .5px solid black;
+  border: .5px solid;
   border-radius: 5px;
   margin-right: 1%;
   &:hover{
@@ -70,7 +70,7 @@ const Button = styled.button`
     transition: 0.3s;
   }
   transition: 0.3s;
-`
+`;
 
 const Input = styled.textarea`
   width: 100%;
@@ -80,6 +80,7 @@ const Input = styled.textarea`
   border: none;
   margin-left: 1%;
   outline: none;
+  color: ${(props) => props.theme.text};
   &:focus{
     -webkit-box-shadow: none;
     -moz-box-shadow: none;

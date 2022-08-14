@@ -173,17 +173,8 @@ io.on('connection', (socket) => {
     sendConnectedClients(socket);
     sendUpdatedScores(socket);
   });
-  socket.on('gameEnd', (winner) => {
+  socket.on('gameEnd', () => {
     io.emit('gameEnd');
-    // console.log(winner, 'is the winner');
-    // const winnerMessage = {
-    //   message: `${winner.displayName} is the winner!`,
-    //   username: '',
-    //   photoURL: winner.photoURL,
-    //   timeStamp: new Date(),
-    // };
-    // roomData.push(winnerMessage);
-    // sendUpdatedRoomData(socket);
     sendUpdatedScores(socket);
   });
 
@@ -236,7 +227,7 @@ io.on('connection', (socket) => {
       hostQueue.splice(hostQueue.indexOf(socket.id), 1);
       const newHost = hostQueue[0];
       if (prevHost !== newHost && hostQueue.length > 0) {
-        let newHostObj = connectedClients[newHost];
+        const newHostObj = connectedClients[newHost];
         const newHostMsg = {
           message: `${newHostObj.displayName} is the new host.`,
           username: '',

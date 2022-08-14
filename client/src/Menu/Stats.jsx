@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 import StatsTile from './StatsTile';
 
 function Stats({ allUsers, setShowStats, sort, setAllUsers }) {
@@ -62,7 +62,7 @@ const Input = styled.textarea`
 `;
 
 const Button1 = styled.button`
-  background: #e7e7e7;
+  background: ${(props) => props.theme.buttonbg};
   opacity: 80%;
   width: 60px;
   height: 30px;
@@ -102,6 +102,10 @@ const UsersContainer = styled.div`
   overflow-y: auto;
   overflow-x: none;
 `;
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+`;
 
 const StyledForm = styled.div`
   display: flex;
@@ -115,13 +119,14 @@ const StyledForm = styled.div`
   width: 100%;
   height: 100%;
   overflow: none;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.2);
+  background-color: ${(props) => props.theme.bgmodal1};
+  background-color: ${(props) => props.theme.bgmodal2};
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
 `;
-
 const StyledInner = styled.div`
   display: flex;
-  z-index: 201;
+  z-index: 205;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -131,13 +136,17 @@ const StyledInner = styled.div`
   height: 95vh;
   overflow-y: auto;
   overflow-x: hidden;
-  background: white;
-  border: .5px solid black;
+  /* background: white; */
+  background: ${(props) => props.theme.background};
+  opacity: 1;
+  border: .5px solid;
   border-radius: 10px;
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
 `;
 
 const Name = styled.div`
-  width: 20%;
+  width: 32%;
   text-align: center;
   &:hover{
     opacity: 60%;
@@ -158,7 +167,7 @@ const Numbers = styled.div`
   }
 `;
 const Right = styled.div`
-  width: 15%;
+  width: 18%;
   text-align: center;
   &:hover{
     opacity: 60%;

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Avatar } from '@mui/material';
 import { formatDistanceToNow, parseISO } from 'date-fns';
-import getGmailUsername from './lib/getGmailUsername';
-import getWinPerc from './lib/getWinPerc';
+import getGmailUsername from '../lib/getGmailUsername';
+import getWinPerc from '../lib/getWinPerc';
 
 function UserInfo({ userForModal, setShowUserModal }) {
   const handleBgClick = (e) => {
@@ -29,7 +29,6 @@ function UserInfo({ userForModal, setShowUserModal }) {
               sx={{ width: 70, height: 70 }}
             />
             <UsernameP>{`${getGmailUsername(userForModal.email)}.`}</UsernameP>
-            <x-small><em>@gmail.com</em></x-small>
           </Left>
           <Right>
             <Stats>{userForModal.wins}<Sp>wins</Sp></Stats>
@@ -56,7 +55,7 @@ const ButtonDiv = styled.div`
 `;
 
 const Button1 = styled.button`
-  background: #e7e7e7;
+  background: ${(props) => props.theme.buttonbg};
   opacity: 80%;
   width: 60px;
   height: 30px;
@@ -129,6 +128,11 @@ const UserInfoInner = styled.div`
   height: 70%;
 `;
 
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+`;
+
 const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
@@ -141,8 +145,11 @@ const StyledForm = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.2);
+  background-color: ${(props) => props.theme.bgmodal1};
+  background-color: ${(props) => props.theme.bgmodal2};
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
+
 `;
 
 const StyledInner = styled.div`
@@ -157,7 +164,10 @@ const StyledInner = styled.div`
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
-  background: white;
-  border: .5px solid black;
+  background: ${(props) => props.theme.background};
+  border: .5px solid;
   border-radius: 10px;
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
+
 `;

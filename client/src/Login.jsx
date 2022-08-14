@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from './firebase';
+import { auth, provider } from './lib/firebase';
 
 function Login() {
   const signIn = (e) => {
@@ -14,18 +14,39 @@ function Login() {
     <LoginContainer>
       <LoginInnerContainer>
         <div>
-          <h1 id="login-title">Counterstrife.</h1>
+          <H1 id="login-title">Counterstrife.</H1>
           <p id="subtitle">are you tired of counters yet?</p>
         </div>
-        <Button1 onClick={signIn}>
-          Sign in with Google.
-        </Button1>
+        <Div>
+          <Button1 onClick={signIn}>
+            Sign in with Google.
+          </Button1>
+          {/* <P>pinky promise, no spam.</P> */}
+        </Div>
       </LoginInnerContainer>
     </LoginContainer>
   );
 }
 
 export default Login;
+
+const P = styled.p`
+  margin: 0;
+  font-style: italic;
+  font-size: x-small;
+  margin-top: 10%;
+`;
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+`;
+
+const H1 = styled.h1`
+  color: ${(props) => props.theme.title};
+`;
 
 const Button1 = styled.button`
     margin-top: 50px;
@@ -35,8 +56,7 @@ const Button1 = styled.button`
     border-radius: 5px;
     background: #00a941;
     border: 1px solid transparent;
-    width: 50%;
-    color: #ffffff;
+    width: auto;
     &:hover{
     opacity: 70%;
     cursor: pointer;
@@ -47,7 +67,7 @@ const LoginContainer = styled.div`
   place-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 `;
 
 const LoginInnerContainer = styled.div`
@@ -57,9 +77,8 @@ const LoginInnerContainer = styled.div`
   max-width: 500px;
   max-height: 500px;
   text-align: center;
-  background-color: white;
   border-radius: 10px;
-  border: .5px solid black;
+  border: .5px solid;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

@@ -1,20 +1,24 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Avatar } from '@mui/material';
 
+function Message({ message, user, getUserInfo }) {
+  const handleUserClick = () => {
+    getUserInfo(message?.userID);
+  };
 
-function Message({ message, user }) {
   return (
     <>
       {(message.username && message.userID !== user?.email) && (
         <MessageTile>
-          <Avatar
+          <Img
             src={message.photoURL}
             alt={message.username}
             referrerPolicy="no-referrer"
             onError={(e) => { e.target.onerror = null; e.target.src = 'public/icons/guest.png'; }}
-            sx={{ width: 40, height: 40 }}
+            onClick={handleUserClick}
           />
           <MsgRight>
             <UserName>{`${message.username}`}</UserName>
@@ -36,12 +40,23 @@ function Message({ message, user }) {
   );
 }
 
+const Img = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  &:hover {
+    cursor: pointer;
+    opacity: 70%;
+  }
+
+`;
+
 const MyMsg = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   margin-right: 1%;
-`
+`;
 
 const UserJoinMsg = styled.div`
   /* align-self: center; */
@@ -50,13 +65,13 @@ const UserJoinMsg = styled.div`
   color: #6d6d6d;
   width: 100%;
   text-align: center;
-`
+`;
 
 const UserName = styled.div`
-  color: darkslategrey;
+  color: ${(props) => props.theme.msgusername};
   font-weight: 100px;
   margin-left: .5em;
-`
+`;
 const ChatBubble = styled.div`
   margin: .5%;
   margin-top: 1%;
@@ -65,12 +80,11 @@ const ChatBubble = styled.div`
   width: auto;
   max-width: 90%;
   height: auto;
-  background: lightgrey;
+  background: ${(props) => props.theme.chatbubble};
   border-radius: 5px;
   overflow-wrap: break-word;
-  /* white-space: initial; */
   text-align: left;
-`
+`;
 
 const MyBubble = styled.div`
   margin: .5%;
@@ -79,11 +93,12 @@ const MyBubble = styled.div`
   padding: .35em .5em .35em .5em;
   width: auto;
   max-width: 90%;
-  background: #b39bff;
+  background: ${(props) => props.theme.hostring};
+  color: ${(props) => props.theme.msg};
   border-radius: 5px;
   white-space: pre-line;
   text-align: right;
-`
+`;
 
 const MsgRight = styled.div`
   display: flex;

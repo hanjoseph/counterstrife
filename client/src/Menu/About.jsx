@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 function About({ setShowAbout }) {
   const back = () => {
@@ -16,6 +16,7 @@ function About({ setShowAbout }) {
           <Q>MADNESS: 10 seconds, click yours to increment, others to decrement.</Q>
           <br />
           <Q><b>change log:</b></Q>
+          <Q>v1.2: darkmode. menu shows at start. animation</Q>
           <Q>v1.1: added hosting. only host can start the game.</Q>
           <Q>v1.01: added ABOUT, win only counts when 2 or more players</Q>
           <Q>v1.0: launch</Q>
@@ -34,7 +35,7 @@ const Button1 = styled.button`
   opacity: 80%;
   width: 100px;
   height: 60px;
-  border: .5px solid black;
+  border: .5px solid;
   border-radius: 5px;
   margin-right: 1%;
   letter-spacing: 1px;
@@ -64,31 +65,10 @@ const CD = styled.div`
   overflow-y: auto;
 `;
 
-const CDContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  background: white;
-  z-index: 100;
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 `;
-
-const CDInner = styled.div`
-  width: 95vw;
-  max-width: 700px;
-  height: 90vh;
-  /* max-height: 700px; */
-  /* min-height: 500px; */
-  /* border: .5px solid black; */
-  text-align: center;
-  padding-bottom: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index:101;
-`;
-
 
 const StyledForm = styled.div`
   display: flex;
@@ -102,8 +82,10 @@ const StyledForm = styled.div`
   width: 100%;
   height: 100%;
   overflow: none;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.2);
+  background-color: ${(props) => props.theme.bgmodal1};
+  background-color: ${(props) => props.theme.bgmodal2};
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
 `;
 
 const StyledInner = styled.div`
@@ -118,7 +100,9 @@ const StyledInner = styled.div`
   height: 99vw;
   overflow-y: auto;
   overflow-x: hidden;
-  background: white;
-  border: .5px solid black;
+  background: ${(props) => props.theme.background};
+  border: .5px solid;
   border-radius: 10px;
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
 `;

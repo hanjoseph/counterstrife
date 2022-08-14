@@ -2,20 +2,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import getGmailUsername from './lib/getGmailUsername';
+import { Button } from '@mui/material';
+import getGmailUsername from '../lib/getGmailUsername';
 
-function ScoreBoard({ scores }) {
+function FinalScore({ scores, setScoreShowing }) {
+  const back = () => {
+    setScoreShowing(false);
+  };
   return (
     <ScoreContainer>
-      {/* {scores
-        .map((score, index) => (
-          <Score key={`${score.displayName}-${index}`}>
-            <ScoreInner>
-              <Name>{`${score.displayName}: `}</Name>
-              <Count>{`${score.count}`}</Count>
-            </ScoreInner>
-          </Score>
-        ))} */}
+      <Title>final scores.</Title>
       {scores.map((score, index) => (
         <Score key={`${score.displayName}-${index}`}>
           <Left>
@@ -32,11 +28,12 @@ function ScoreBoard({ scores }) {
           </Div>
         </Score>
       ))}
+      <Button onClick={back}>back</Button>
     </ScoreContainer>
   );
 }
 
-export default ScoreBoard;
+export default FinalScore;
 
 const Div = styled.div`
   display: flex;
@@ -67,27 +64,6 @@ const Img = styled.img`
   margin-left: 30px;
 `;
 
-
-const Name = styled.p`
-  font-weight: normal;
-  margin-left: 2%;
-  overflow: hidden;
-`;
-
-const Count = styled.p`
-  margin-right: 2%;
-  font-weight: bold;
-  overflow: hidden;
-`;
-
-const ScoreInner = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 const Score = styled.div`
   width: 96%;
   text-align: center;
@@ -95,8 +71,15 @@ const Score = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: .3px solid black;
+  z-index:101;
+  border: .3px solid;
   margin-bottom: 2px;
+`;
+
+const Title = styled.p`
+  font-weight: bold;
+  letter-spacing: -1px;
+  font-size: 40px;
 `;
 
 const ScoreContainer = styled.div`
@@ -104,9 +87,18 @@ const ScoreContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   margin-top:1%;
-  width: 100%;
+  width: 96%;
   overflow-y: auto;
   align-items: center;
-  /* border-top: .3px solid black; */
-  overflow: hidden;
+  cursor: default;
+
+  > button {
+    margin-top: 3%;
+    background-color: gainsboro !important;
+    color: black;
+    border: none;
+  }
+  > button:hover {
+    opacity: 70%;
+  }
 `;
