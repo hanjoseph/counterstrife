@@ -10,7 +10,7 @@ function CounterMad({
   return (
     <CounterContainer>
       <CounterInner>
-        <small><em>click on other buttons to decrement!</em></small>
+        <P>click on other buttons to decrement!</P>
         {users.map((item, index) => <MiniCounter key={`${item.socket}-${index}`} owner={item} socket={socket} clicker={user} />)}
       </CounterInner>
     </CounterContainer>
@@ -18,6 +18,12 @@ function CounterMad({
 }
 
 export default CounterMad;
+
+const P = styled.p`
+  font-style: italic;
+  margin: 0;
+  margin-bottom: 3%;
+`;
 
 const CounterInner = styled.div`
   width: 95vw;
@@ -38,6 +44,6 @@ const CounterContainer = styled.div`
   height: 100vh;
   display: grid;
   place-items: center;
-  background: white;
+  /* background: white; */
   z-index: 100;
 `;
