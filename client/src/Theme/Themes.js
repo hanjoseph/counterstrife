@@ -1,7 +1,7 @@
 export const lightTheme = {
   body: 'white',
   text: 'black',
-  border: '#202020',
+  border: '#242424',
   background: 'white',
   bgmodal1: 'rgb(0, 0, 0)',
   bgmodal2: 'rgba(0, 0, 0, 0.2)',
@@ -15,10 +15,10 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  body: '#202020',
+  body: '#242424',
   text: 'gainsboro',
   border: 'gainsboro',
-  background: '#202020',
+  background: '#242424',
   bgmodal1: 'rgb(1, 1, 1)',
   bgmodal2: 'rgba(1, 1, 1, 0.7)',
   chatbubble: 'darkslategrey',
