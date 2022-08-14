@@ -15,8 +15,8 @@ export const lightTheme = {
 
 export const darkTheme = {
   body: '#202020',
-  text: 'white',
-  border: 'white',
+  text: 'gainsboro',
+  border: 'gainsboro',
   background: '#202020',
   bgmodal1: 'rgb(1, 1, 1)',
   bgmodal2: 'rgba(1, 1, 1, 0.7)',

@@ -15,7 +15,7 @@ function Login() {
       <LoginInnerContainer>
         <div>
           <H1 id="login-title">Counterstrife.</H1>
-          <P id="subtitle">are you tired of counters yet?</p>
+          <p id="subtitle">are you tired of counters yet?</p>
         </div>
         <Button1 onClick={signIn}>
           Sign in with Google.
