@@ -80,10 +80,9 @@ const ChatBubble = styled.div`
   width: auto;
   max-width: 90%;
   height: auto;
-  background: lightgrey;
+  background: ${(props) => props.theme.chatbubble};
   border-radius: 5px;
   overflow-wrap: break-word;
-  /* white-space: initial; */
   text-align: left;
 `;
 

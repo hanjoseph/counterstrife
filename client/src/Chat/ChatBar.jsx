@@ -80,6 +80,7 @@ const Input = styled.textarea`
   border: none;
   margin-left: 1%;
   outline: none;
+  color: ${(props) => props.theme.text};
   &:focus{
     -webkit-box-shadow: none;
     -moz-box-shadow: none;

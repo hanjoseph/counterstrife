@@ -64,7 +64,7 @@ const P = styled.p`
     letter-spacing: 4px;
     transition: 0.3s;
   }
-  transition: 0.6s;
+  transition: 0.3s;
 `;
 const Inner = styled.div`
   width: 33.33%;
@@ -87,12 +87,11 @@ const Middle = styled(Inner)`
 const MenuBar = styled.div`
   height: ${(props) => (props.showMenu ? 35 : 0)}px;
   width: 100%;
-  /* border-top: .5px solid black; */
   border-bottom: ${(props) => (props.showMenu ? 0.5 : 0)}px solid;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   cursor: default;
-  transition: .5s;
+  transition: .2s;
 `;

@@ -4,16 +4,19 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './lib/firebase';
 import GlobalStyle from './Theme/GlobalStyle';
 import { lightTheme, darkTheme } from './Theme/Themes';
+import useDarkMode from './Theme/useDarkMode';
 import Login from './Login';
 import Home from './Home';
 
 function App() {
   const [user, loading] = useAuthState(auth);
   const [photo, setPhoto] = useState('');
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useDarkMode(); // custom hook!
+
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
-    // console.log('should toggle theme');
   };
 
   useEffect(() => {
@@ -31,7 +34,7 @@ function App() {
     );
   }
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyle />
         <MainDiv>

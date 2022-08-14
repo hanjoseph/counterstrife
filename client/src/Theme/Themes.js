@@ -3,6 +3,7 @@ export const lightTheme = {
   text: 'black',
   border: 'black',
   background: 'white',
+  chatbubble: 'lightgrey',
 };
 
 export const darkTheme = {
@@ -10,4 +11,5 @@ export const darkTheme = {
   text: 'white',
   border: 'white',
   background: 'black',
+  chatbubble: 'darkslategrey',
 };
