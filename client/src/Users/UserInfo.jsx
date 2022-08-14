@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Avatar } from '@mui/material';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import getGmailUsername from '../lib/getGmailUsername';
@@ -128,6 +128,11 @@ const UserInfoInner = styled.div`
   height: 70%;
 `;
 
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+`;
+
 const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
@@ -142,6 +147,9 @@ const StyledForm = styled.div`
   overflow: auto;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.2);
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
+
 `;
 
 const StyledInner = styled.div`
@@ -159,4 +167,7 @@ const StyledInner = styled.div`
   background: white;
   border: .5px solid black;
   border-radius: 10px;
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
+
 `;

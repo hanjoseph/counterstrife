@@ -329,9 +329,6 @@ const CDInner = styled.div`
   width: 95vw;
   max-width: 700px;
   height: 90vh;
-  /* max-height: 700px; */
-  /* min-height: 500px; */
-  /* border: .5px solid black; */
   text-align: center;
   padding-bottom: 100px;
   display: flex;
