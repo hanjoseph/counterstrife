@@ -55,7 +55,7 @@ const ButtonDiv = styled.div`
 `;
 
 const Button1 = styled.button`
-  background: #e7e7e7;
+  background: ${(props) => props.theme.buttonbg};
   opacity: 80%;
   width: 60px;
   height: 30px;

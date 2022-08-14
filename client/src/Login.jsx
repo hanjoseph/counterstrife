@@ -20,6 +20,7 @@ function Login() {
         <Button1 onClick={signIn}>
           Sign in with Google.
         </Button1>
+        {/* <p id="subtitle">strictly for stats, no emails, no spam.</p> */}
       </LoginInnerContainer>
     </LoginContainer>
   );

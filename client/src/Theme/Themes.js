@@ -11,6 +11,7 @@ export const lightTheme = {
   hostring: '#b39bff',
   msg: 'darkslategrey',
   title: 'black',
+  buttonbg: 'lightgrey',
 };
 
 export const darkTheme = {
@@ -26,4 +27,5 @@ export const darkTheme = {
   hostring: '#d4ff00',
   msg: 'darkslategrey',
   title: 'gainsboro',
+  buttonbg: 'lightgrey',
 };

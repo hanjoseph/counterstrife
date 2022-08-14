@@ -16,6 +16,7 @@ function About({ setShowAbout }) {
           <Q>MADNESS: 10 seconds, click yours to increment, others to decrement.</Q>
           <br />
           <Q><b>change log:</b></Q>
+          <Q>v1.2: darkmode. menu shows at start. animation</Q>
           <Q>v1.1: added hosting. only host can start the game.</Q>
           <Q>v1.01: added ABOUT, win only counts when 2 or more players</Q>
           <Q>v1.0: launch</Q>

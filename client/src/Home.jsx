@@ -291,27 +291,11 @@ function Home({ photo, user, themeToggler }) {
 
 export default Home;
 
-const Button1 = styled.button`
-  background: #e7e7e7;
-  opacity: 80%;
-  width: 60px;
-  height: 30px;
-  border: .5px solid;
-  border-radius: 5px;
-  margin-right: 1%;
-  &:hover{
-    opacity: 60%;
-    cursor: pointer;
-    letter-spacing: 2px;
-    transition: 0.3s;
-  }
-`;
 const CDContainer = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
   place-items: center;
-  /* background: white; */
   z-index: 100;
 `;
 

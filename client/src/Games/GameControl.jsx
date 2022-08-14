@@ -22,7 +22,7 @@ function GameControl({ start, socket, game }) {
 export default GameControl;
 
 const Button1 = styled.button`
-  background: ${(props) => (props.game === 'madness' ? '#ff3939' : '#e7e7e7')};
+  background: ${(props) => (props.game === 'madness' ? '#ff3939' : props.theme.buttonbg)};
   opacity: 80%;
   width: 100px;
   height: 60px;
