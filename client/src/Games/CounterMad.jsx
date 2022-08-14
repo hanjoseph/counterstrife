@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import MiniCounter from './MiniCounter';
 
 function CounterMad({
-  socket, user, count, setCount, scores, users,
+  socket, user, users,
 }) {
   return (
     <CounterContainer>
@@ -23,7 +23,6 @@ const CounterInner = styled.div`
   width: 95vw;
   max-width: 700px
   min-height: 500px;
-  /* border: .5px solid black; */
   text-align: center;
   padding-top: 50px;
   display: flex;

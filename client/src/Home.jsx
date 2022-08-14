@@ -8,16 +8,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
 import socketIOClient from 'socket.io-client';
-import { auth } from './firebase';
-import ChatList from './Chat/ChatList';
-import Counter from './Counter';
-import FinalScore from './FinalScore';
-import Users from './Users';
+import { auth } from './lib/firebase';
 import Header from './Header';
-import UserInfo from './UserInfo';
-import CounterMad from './CounterMad';
-import Menu from './Menu';
-import GameControl from './GameControl';
+import ChatList from './Chat/ChatList';
+import Menu from './Menu/Menu';
+import Counter from './Games/Counter';
+import CounterMad from './Games/CounterMad';
+import GameControl from './Games/GameControl';
+import FinalScore from './Games/FinalScore';
+import Users from './Users/Users';
+import UserInfo from './Users/UserInfo';
 
 const ENDPOINT = 'http://127.0.0.1:3000';
 
@@ -36,7 +36,7 @@ function Home({ photo, user }) {
   const [userForModal, setUserForModal] = useState({});
   const [showUserModal, setShowUserModal] = useState(false);
   const [game, setGame] = useState('');
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [host, setHost] = useState({});
 
   const checkinUser = (user_obj) => {
@@ -269,6 +269,9 @@ function Home({ photo, user }) {
         chatRoomData={chatRoomData}
         user={user}
         socket={socket}
+        userForModal={userForModal}
+        setShowUserModal={setShowUserModal}
+        getUserInfo={getUserInfo}
       />
       <GameControl
         start={start}

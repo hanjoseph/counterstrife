@@ -2,19 +2,27 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Avatar } from '@mui/material';
+import UserInfo from '../Users/UserInfo';
 
+function Message({ message, user, getUserInfo, userForModal, setShowUserModal }) {
 
-function Message({ message, user }) {
+  const [showModal, setShowModal] = useState(false);
+  const handleUserClick = () => {
+    getUserInfo(message?.userID);
+    console.log(message.userID);
+    // setShowUserModal(true);
+  }
+
   return (
     <>
       {(message.username && message.userID !== user?.email) && (
         <MessageTile>
-          <Avatar
+          <Img
             src={message.photoURL}
             alt={message.username}
             referrerPolicy="no-referrer"
             onError={(e) => { e.target.onerror = null; e.target.src = 'public/icons/guest.png'; }}
-            sx={{ width: 40, height: 40 }}
+            onClick={handleUserClick}
           />
           <MsgRight>
             <UserName>{`${message.username}`}</UserName>
@@ -35,6 +43,17 @@ function Message({ message, user }) {
     </>
   );
 }
+
+const Img = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  &:hover {
+    cursor: pointer;
+    opacity: 70%;
+  }
+
+`;
 
 const MyMsg = styled.div`
   display: flex;

@@ -33,7 +33,6 @@ const GameBar = styled.div`
 `;
 
 const Button1 = styled.button`
-  /* background: #e7e7e7; */
   background: ${(props) => (props.game === 'madness' ? '#ff3939' : '#e7e7e7')};
   opacity: 80%;
   width: 100px;

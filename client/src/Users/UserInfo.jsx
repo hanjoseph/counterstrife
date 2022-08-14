@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Avatar } from '@mui/material';
 import { formatDistanceToNow, parseISO } from 'date-fns';
-import getGmailUsername from './lib/getGmailUsername';
-import getWinPerc from './lib/getWinPerc';
+import getGmailUsername from '../lib/getGmailUsername';
+import getWinPerc from '../lib/getWinPerc';
 
 function UserInfo({ userForModal, setShowUserModal }) {
   const handleBgClick = (e) => {
@@ -29,7 +29,6 @@ function UserInfo({ userForModal, setShowUserModal }) {
               sx={{ width: 70, height: 70 }}
             />
             <UsernameP>{`${getGmailUsername(userForModal.email)}.`}</UsernameP>
-            <x-small><em>@gmail.com</em></x-small>
           </Left>
           <Right>
             <Stats>{userForModal.wins}<Sp>wins</Sp></Stats>

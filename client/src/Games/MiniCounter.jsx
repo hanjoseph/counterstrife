@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from '@mui/material';
-import getGmailUsername from './lib/getGmailUsername';
+import getGmailUsername from '../lib/getGmailUsername';
 
 function MiniCounter({ owner, socket, clicker }) {
   const increment = () => {
-    // setCount(count + 1);
     socket.emit('clickmad', owner); // emits owner.
   };
 

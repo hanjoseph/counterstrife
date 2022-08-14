@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from './firebase';
+import { auth, provider } from './lib/firebase';
 
 function Login() {
   const signIn = (e) => {

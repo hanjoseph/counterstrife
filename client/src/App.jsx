@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from './firebase';
+import { auth } from './lib/firebase';
 import Login from './Login';
 import Home from './Home';
 

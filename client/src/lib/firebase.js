@@ -2,12 +2,10 @@
 // import 'firebase/compat/firestore';
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
-// require('dotenv').config();
-import key from './key';
-
 import {
   getFirestore,
 } from 'firebase/firestore';
+import key from './key';
 
 const firebaseConfig = {
   apiKey: key,

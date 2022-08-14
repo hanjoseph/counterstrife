@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-function Users({ users, getUserInfo, winner, host }) {
+function Users({
+  users, getUserInfo, winner, host,
+}) {
   const handleClick = (e) => {
     const email = e.target.alt;
     getUserInfo(email); // sets which user to show on modal.

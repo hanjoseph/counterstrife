@@ -137,7 +137,7 @@ const StyledInner = styled.div`
 `;
 
 const Name = styled.div`
-  width: 20%;
+  width: 32%;
   text-align: center;
   &:hover{
     opacity: 60%;
@@ -158,7 +158,7 @@ const Numbers = styled.div`
   }
 `;
 const Right = styled.div`
-  width: 15%;
+  width: 18%;
   text-align: center;
   &:hover{
     opacity: 60%;

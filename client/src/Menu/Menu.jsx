@@ -4,7 +4,7 @@ import axios from 'axios';
 import { parseISO } from 'date-fns';
 import Stats from './Stats';
 import About from './About';
-import getWinPerc from './lib/getWinPerc';
+import getWinPerc from '../lib/getWinPerc';
 
 function Menu({ showMenu, signOut }) {
   const [showStats, setShowStats] = useState(false);
@@ -26,10 +26,6 @@ function Menu({ showMenu, signOut }) {
 
   const about = () => {
     setShowAbout(true);
-  }
-
-  const refresh = () => {
-    window.location.reload();
   };
 
   const sort = (sortMethod) => {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
@@ -22,14 +23,6 @@ function Header({
 }
 
 export default Header;
-
-const P = styled.p`
-  font-weight: 200;
-  font-size: small;
-  margin-right: 1%;
-  /* margin-bottom: 2%; */
-
-`;
 
 const HeaderRight = styled.div`
   display: flex;
@@ -57,18 +50,6 @@ const Title = styled.div`
   margin-top:2%;
   display: flex;
   align-items: bottom;
-  &: hover{
-    opacity: 70%;
-    cursor: pointer;
-  }
-`;
-
-const Button1 = styled.button`
-  height: 50px;
-  width: 100px;
-  margin-top: 3%;
-  text-align: center;
-  font-size: 20px;
   &: hover{
     opacity: 70%;
     cursor: pointer;
