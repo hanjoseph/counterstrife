@@ -37,7 +37,7 @@ const User = styled.div`
   justify-content: space-between;
   &:hover {
     opacity: 90%;
-    border: .1px solid black;
+    border: .1px solid;
     cursor: pointer;
     background: #efefef;
     transition: 0.3s;

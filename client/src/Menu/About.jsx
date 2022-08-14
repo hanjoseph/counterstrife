@@ -124,8 +124,8 @@ const StyledInner = styled.div`
   height: 99vw;
   overflow-y: auto;
   overflow-x: hidden;
-  background: white;
-  border: .5px solid black;
+  /* background: white; */
+  border: .5px solid;
   border-radius: 10px;
   animation-name: ${fadeIn};
   animation-duration: 0.5s;

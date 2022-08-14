@@ -80,15 +80,15 @@ const Inner = styled.div`
 `;
 
 const Middle = styled(Inner)`
-  border-left: 0.5px solid black;
-  border-right: .5px solid black;
+  border-left: 0.5px solid;
+  border-right: .5px solid;
 `;
 
 const MenuBar = styled.div`
   height: ${(props) => (props.showMenu ? 35 : 0)}px;
   width: 100%;
   /* border-top: .5px solid black; */
-  border-bottom: ${(props) => (props.showMenu ? 0.5 : 0)}px solid black;
+  border-bottom: ${(props) => (props.showMenu ? 0.5 : 0)}px solid;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

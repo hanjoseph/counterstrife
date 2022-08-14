@@ -54,7 +54,7 @@ const HomeContainer = styled.div`
   place-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 `;
 
 const Spinner = styled.img`
@@ -68,7 +68,7 @@ const LoadPage = styled.div`
   height: 100vh;
   display: grid;
   place-items: center;
-  background: white;
+  /* background: white; */
   z-index: 100;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;

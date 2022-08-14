@@ -296,7 +296,7 @@ const Button1 = styled.button`
   opacity: 80%;
   width: 60px;
   height: 30px;
-  border: .5px solid black;
+  border: .5px solid;
   border-radius: 5px;
   margin-right: 1%;
   &:hover{
@@ -311,7 +311,7 @@ const CDContainer = styled.div`
   height: 100vh;
   display: grid;
   place-items: center;
-  background: white;
+  /* background: white; */
   z-index: 100;
 `;
 
@@ -353,6 +353,6 @@ const HomeDiv = styled.div`
   height: 80vh;
   max-width: 700px;
   height: auto;
-  border: .5px solid black;
+  border: .5px solid;
   border-radius: 5px;
 `;

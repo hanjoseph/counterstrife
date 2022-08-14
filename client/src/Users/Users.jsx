@@ -70,7 +70,6 @@ const UsersBar = styled.div`
   height: auto;
   min-height: 32px;
   width: 100%;
-  /* border-top: .5px solid black; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

@@ -72,7 +72,7 @@ const Score = styled.div`
   justify-content: space-between;
   align-items: center;
   z-index:101;
-  border: .3px solid black;
+  border: .3px solid;
   margin-bottom: 2px;
 `;
 

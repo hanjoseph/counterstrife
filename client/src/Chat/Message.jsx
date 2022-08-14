@@ -1,17 +1,13 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Avatar } from '@mui/material';
-import UserInfo from '../Users/UserInfo';
 
-function Message({ message, user, getUserInfo, userForModal, setShowUserModal }) {
-
-  const [showModal, setShowModal] = useState(false);
+function Message({ message, user, getUserInfo }) {
   const handleUserClick = () => {
     getUserInfo(message?.userID);
-    console.log(message.userID);
-    // setShowUserModal(true);
-  }
+  };
 
   return (
     <>
@@ -60,7 +56,7 @@ const MyMsg = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin-right: 1%;
-`
+`;
 
 const UserJoinMsg = styled.div`
   /* align-self: center; */
@@ -69,13 +65,13 @@ const UserJoinMsg = styled.div`
   color: #6d6d6d;
   width: 100%;
   text-align: center;
-`
+`;
 
 const UserName = styled.div`
   color: darkslategrey;
   font-weight: 100px;
   margin-left: .5em;
-`
+`;
 const ChatBubble = styled.div`
   margin: .5%;
   margin-top: 1%;
@@ -89,7 +85,7 @@ const ChatBubble = styled.div`
   overflow-wrap: break-word;
   /* white-space: initial; */
   text-align: left;
-`
+`;
 
 const MyBubble = styled.div`
   margin: .5%;
@@ -102,7 +98,7 @@ const MyBubble = styled.div`
   border-radius: 5px;
   white-space: pre-line;
   text-align: right;
-`
+`;
 
 const MsgRight = styled.div`
   display: flex;

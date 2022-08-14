@@ -1,11 +1,13 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
-import React, {useRef, useState, useEffect} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Message from './Message';
 import ChatBar from './ChatBar';
 
-function ChatList({ chatRoomData, user, socket, userForModal, setShowUserModal, getUserInfo }) {
+function ChatList({
+  chatRoomData, user, socket, userForModal, setShowUserModal, getUserInfo,
+}) {
   const chatRef = useRef();
   const [message, setMessage] = useState('');
 
@@ -17,7 +19,7 @@ function ChatList({ chatRoomData, user, socket, userForModal, setShowUserModal, 
     <ChatRoomMain>
       <ChatContainer ref={chatRef}>
         {chatRoomData.length > 0
-          && chatRoomData.map((message, index) =>
+          && chatRoomData.map((message, index) => (
             <Message
               key={`${message?.email}-${message?.timestamp}-${index}`}
               user={user}
@@ -25,7 +27,8 @@ function ChatList({ chatRoomData, user, socket, userForModal, setShowUserModal, 
               getUserInfo={getUserInfo}
               userForModal={userForModal}
               setShowUserModal={setShowUserModal}
-            />)}
+            />
+          ))}
       </ChatContainer>
       <ChatBar user={user} socket={socket} />
     </ChatRoomMain>
@@ -40,8 +43,8 @@ const ChatRoomMain = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: .5px solid black;
-`
+  border: .5px solid;
+`;
 
 const ChatContainer = styled.div`
   height: 350px;
@@ -49,6 +52,5 @@ const ChatContainer = styled.div`
   padding-top: 10px;
   overflow-y: auto;
   overflow-x: none;
-  border-bottom: .5px solid black;
-  /* padding: 1%; */
+  border-bottom: .5px solid;
 `;
