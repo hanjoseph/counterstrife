@@ -6,7 +6,7 @@ import Stats from './Stats';
 import About from './About';
 import getWinPerc from '../lib/getWinPerc';
 
-function Menu({ showMenu, signOut }) {
+function Menu({ showMenu, signOut, themeToggler }) {
   const [showStats, setShowStats] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
   const [showAbout, setShowAbout] = useState(false);
@@ -45,7 +45,7 @@ function Menu({ showMenu, signOut }) {
     <MenuBar showMenu={showMenu}>
       <Inner><P showMenu={showMenu} onClick={handleClick}>STATS</P></Inner>
       <Middle><P showMenu={showMenu} onClick={about}>ABOUT</P></Middle>
-      <Inner><P showMenu={showMenu} onClick={signOut}>SIGN OUT</P></Inner>
+      <Inner><P showMenu={showMenu} onClick={themeToggler}>THEME</P></Inner>
       {showStats && <Stats allUsers={allUsers} setShowStats={setShowStats} sort={sort} setAllUsers={setAllUsers} />}
       {showAbout && <About setShowAbout={setShowAbout} />}
     </MenuBar>

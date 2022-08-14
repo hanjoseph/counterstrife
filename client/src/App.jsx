@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './lib/firebase';
+import GlobalStyle from './Theme/GlobalStyle';
+import { lightTheme, darkTheme } from './Theme/Themes';
 import Login from './Login';
 import Home from './Home';
 
 function App() {
-  // const [showing, setShowing] = useState(false);
   const [user, loading] = useAuthState(auth);
   const [photo, setPhoto] = useState('');
+  const [theme, setTheme] = useState('light');
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+    // console.log('should toggle theme');
+  };
 
   useEffect(() => {
     setPhoto(user?.photoURL);
@@ -25,16 +31,21 @@ function App() {
     );
   }
   return (
-    <MainDiv>
-      {!user ? (
-        <Login />
-      )
-        : (
-          <HomeContainer>
-            <Home photo={photo} user={user} />
-          </HomeContainer>
-        )}
-    </MainDiv>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <>
+        <GlobalStyle />
+        <MainDiv>
+          {!user ? (
+            <Login />
+          )
+            : (
+              <HomeContainer>
+                <Home photo={photo} user={user} themeToggler={themeToggler} />
+              </HomeContainer>
+            )}
+        </MainDiv>
+      </>
+    </ThemeProvider>
   );
 }
 

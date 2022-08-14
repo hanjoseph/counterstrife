@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Avatar } from '@mui/material';
 
 function Header({
-  user, photo, showMenu, setShowMenu,
+  user, photo, showMenu, setShowMenu, signOut,
 }) {
   const toggleMenu = () => {
     showMenu ? setShowMenu(false)
@@ -16,7 +16,7 @@ function Header({
       <Title onClick={toggleMenu}>Counterstrife.</Title>
       <HeaderRight>
         {photo?.length > 0
-        && <Avatar id="header-icon" onClick={toggleMenu} src={photo} alt={user?.displayName} referrerPolicy="no-referrer" />}
+        && <Avatar id="header-icon" onClick={signOut} src={photo} alt={user?.displayName} referrerPolicy="no-referrer" />}
       </HeaderRight>
     </HeaderContainer>
   );

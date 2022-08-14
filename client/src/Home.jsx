@@ -23,7 +23,7 @@ const ENDPOINT = 'http://127.0.0.1:3000';
 
 const socket = socketIOClient(ENDPOINT);
 
-function Home({ photo, user }) {
+function Home({ photo, user, themeToggler }) {
   const [chatRoomData, setChatRoomData] = useState([]);
   const [gameShowing, setGameShowing] = useState(false);
   const [count, setCount] = useState(0);
@@ -260,8 +260,14 @@ function Home({ photo, user }) {
   }
   return (
     <HomeDiv>
-      <Header user={user} photo={photo} signOut={signOut} showMenu={showMenu} setShowMenu={setShowMenu} />
-      <Menu showMenu={showMenu} signOut={signOut} />
+      <Header
+        user={user}
+        photo={photo}
+        signOut={signOut}
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+      />
+      <Menu showMenu={showMenu} signOut={signOut} themeToggler={themeToggler} />
       <Users users={users} host={host} getUserInfo={getUserInfo} winner={winner} />
       {showUserModal
         && (<UserInfo userForModal={userForModal} setShowUserModal={setShowUserModal} />)}
