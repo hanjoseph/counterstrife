@@ -106,7 +106,6 @@ const UsernameP = styled.p`
   margin: 0px;
   margin-top: 10px;
   margin-bottom: 10px;
-  /* border-top: .2px solid black; */
 `;
 const Left = styled.div`
   height: 200px;
@@ -115,7 +114,7 @@ const Left = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-right: .2px solid black;
+  border-right: .2px solid;
   margin-right: 25px;
 `;
 
