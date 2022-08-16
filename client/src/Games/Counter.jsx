@@ -58,7 +58,6 @@ const CounterContainer = styled.div`
   height: 100vh;
   display: grid;
   place-items: center;
-  /* background: white; */
   z-index: 100;
 `;
 

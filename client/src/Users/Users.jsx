@@ -76,7 +76,8 @@ const UsersBar = styled.div`
   justify-content: flex-start;
   align-items: center;
   cursor: default;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  overflow-x: hidden;
 `;
 
 export default Users;

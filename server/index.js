@@ -130,7 +130,7 @@ io.on('connection', (socket) => {
     temp.count = 0;
     connectedClients[socket.id] = temp;
     hostQueue.push(socket.id);
-    console.log(hostQueue);
+    // console.log(hostQueue);
     console.log('user', userData.displayName, 'has joined');
     // console.log(connectedClients);
     const enteredRoomMessage = {
