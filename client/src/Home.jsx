@@ -188,6 +188,8 @@ function Home({ photo, user, themeToggler }) {
     if (userInfo.email === host.email || emails.indexOf(userInfo.email) !== -1) {
       if (game === 'madness' && users.length < 2) {
         alert('MADNESS requires at least two players.');
+      } else if (game === 'madness' && users.length > 10) {
+        alert('too many players for MADNESS');
       } else {
         resetUsers();
         socket.emit('startcountdown');
@@ -212,7 +214,7 @@ function Home({ photo, user, themeToggler }) {
   const getUserInfo = (email) => {
     axios.get(`/users?email=${email}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setUserForModal(response.data);
         setShowUserModal(true);
       })
