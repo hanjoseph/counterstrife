@@ -184,21 +184,26 @@ function Home({ photo, user, themeToggler }) {
   ];
   // game control
   const start = () => {
-    if (userInfo.email === host.email || emails.indexOf(userInfo.email) !== -1 ) {  // only if you are the host. or if you are me :)
-      resetUsers();
-      socket.emit('startcountdown');
-      setTimeout(() => {
-        socket.emit('gameStart');
-        console.log('game starts in 3');
-      }, 3000);
-      setCount(0);
-      setCountdown(3);
-      let time = 10000;
-      if (game === 'madness') time = 13000;
-      setTimeout(() => {
-        console.log('game should end in', time / 1000);
-        socket.emit('gameEnd');
-      }, time);
+    // only if you are the host. or if you are me :)
+    if (userInfo.email === host.email || emails.indexOf(userInfo.email) !== -1) {
+      if (game === 'madness' && users.length < 2) {
+        alert('MADNESS requires at least two players.');
+      } else {
+        resetUsers();
+        socket.emit('startcountdown');
+        setTimeout(() => {
+          socket.emit('gameStart');
+          console.log('game starts in 3');
+        }, 3000);
+        setCount(0);
+        setCountdown(3);
+        let time = 10000;
+        if (game === 'madness') time = 13000;
+        setTimeout(() => {
+          console.log('game should end in', time / 1000);
+          socket.emit('gameEnd');
+        }, time);
+      }
     } else {
       alert('only the host can start the game.');
     }

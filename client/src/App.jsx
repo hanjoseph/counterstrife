@@ -62,7 +62,6 @@ const HomeContainer = styled.div`
   place-items: center;
   height: 100vh;
   width: 100vw;
-  /* background-color: #ffffff; */
 `;
 
 const Spinner = styled.img`
