@@ -5,10 +5,10 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import {
   getFirestore,
 } from 'firebase/firestore';
-import key from './key';
+// import key from './key';
 
 const firebaseConfig = {
-  apiKey: key,
+  apiKey: 'AIzaSyBVARI7c80MC8ZHwOD4LHaYZWl0tJZiCpw',
   authDomain: 'mvp-game-d7936.firebaseapp.com',
   projectId: 'mvp-game-d7936',
   storageBucket: 'mvp-game-d7936.appspot.com',
