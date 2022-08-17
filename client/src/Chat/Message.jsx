@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Avatar } from '@mui/material';
 
 function Message({ message, user, getUserInfo }) {
   const handleUserClick = () => {
