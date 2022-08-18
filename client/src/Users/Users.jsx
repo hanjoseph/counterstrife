@@ -43,8 +43,7 @@ const Img = styled.img`
   border-radius: 50%;
   margin-right: 5px;
   transition: 0.3s;
-  border: ${(props) => ((props.host.email === props.user.email) ? `3px solid ${props.theme.hostring}` : `1px solid ${props.theme.border}`)};
-  /* border: ${(props) => ((props.host.email === props.user.email) ? 3 : 0)}px solid #5196f0; */
+  border: ${(props) => (props.host && ((props.host.email === props.user.email) ? `3px solid ${props.theme.hostring}` : `1px solid ${props.theme.border}`))};
   &:hover {
     cursor: pointer;
     opacity: 70%;
