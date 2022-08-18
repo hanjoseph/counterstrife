@@ -113,11 +113,11 @@ const sendUpdatedGame = (socket) => {
 const sendUpdatedHost = (socket) => {
   if (hostQueue.length > 0) {
     const newHost = connectedClients[hostQueue[0]];
-    if (newHost.email.length > 0) {
+    if (!newHost === undefined) {
       console.log(newHost.email, 'is thehost!');
-      socket.emit('getHost', newHost);
-      socket.broadcast.emit('getHost', newHost);
     }
+    socket.emit('getHost', newHost);
+    socket.broadcast.emit('getHost', newHost);
   }
 };
 
@@ -229,14 +229,16 @@ io.on('connection', (socket) => {
       hostQueue.splice(hostQueue.indexOf(socket.id), 1);
       const newHost = hostQueue[0];
       if (prevHost !== newHost && hostQueue.length > 0) {
-        const newHostObj = connectedClients[newHost];
-        const newHostMsg = {
-          message: `${newHostObj.displayName} is the new host.`,
-          username: '',
-          photoURL: newHostObj.photoURL,
-          timeStamp: new Date(),
-        };
-        roomData.push(newHostMsg);
+        if (connectedClients[newHost]) {
+          const newHostObj = connectedClients[newHost];
+          const newHostMsg = {
+            message: `${newHostObj.displayName} is the new host.`,
+            username: '',
+            photoURL: newHostObj.photoURL,
+            timeStamp: new Date(),
+          };
+          roomData.push(newHostMsg);
+        }
       }
       sendUpdatedRoomData(socket);
       console.log(hostQueue);
