@@ -111,13 +111,13 @@ const sendUpdatedGame = (socket) => {
 };
 
 const sendUpdatedHost = (socket) => {
-  if (hostQueue.length > 0) {
+  if (hostQueue.length >= 0) {
     const newHost = connectedClients[hostQueue[0]];
     if (!newHost === undefined) {
       console.log(newHost.email, 'is thehost!');
+      socket.emit('getHost', newHost);
+      socket.broadcast.emit('getHost', newHost);
     }
-    socket.emit('getHost', newHost);
-    socket.broadcast.emit('getHost', newHost);
   }
 };
 
@@ -132,9 +132,9 @@ io.on('connection', (socket) => {
     temp.count = 0;
     connectedClients[socket.id] = temp;
     hostQueue.push(socket.id);
-    // console.log(hostQueue);
+    console.log(hostQueue);
     console.log('user', userData.displayName, 'has joined');
-    // console.log(connectedClients);
+    console.log(connectedClients);
     const enteredRoomMessage = {
       message: `${userData.displayName} has entered the room`,
       username: '',
