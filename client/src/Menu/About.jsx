@@ -2,12 +2,17 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 function About({ setShowAbout }) {
+  const handleBgClick = (e) => {
+    if (e.target.id === 'about-bg') {
+      setShowAbout(false);
+    }
+  };
   const back = () => {
     setShowAbout(false);
   };
   return (
 
-    <StyledForm>
+    <StyledForm id="about-bg" onClick={handleBgClick}>
       <StyledInner>
         <h1 id="about-title">Counterstrife.</h1>
         <CD>
