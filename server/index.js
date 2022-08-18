@@ -115,9 +115,9 @@ const sendUpdatedHost = (socket) => {
     const newHost = connectedClients[hostQueue[0]];
     if (newHost.email.length > 0) {
       console.log(newHost.email, 'is thehost!');
+      socket.emit('getHost', newHost);
+      socket.broadcast.emit('getHost', newHost);
     }
-    socket.emit('getHost', newHost);
-    socket.broadcast.emit('getHost', newHost);
   }
 };
 
