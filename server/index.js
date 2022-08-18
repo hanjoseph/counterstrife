@@ -113,9 +113,11 @@ const sendUpdatedGame = (socket) => {
 const sendUpdatedHost = (socket) => {
   if (hostQueue.length > 0) {
     const newHost = connectedClients[hostQueue[0]];
-    console.log(newHost.email, 'is thehost!');
-    socket.emit('getHost', newHost);
-    socket.broadcast.emit('getHost', newHost);
+    if (newHost.email.length > 0) {
+      console.log(newHost.email, 'is thehost!');
+      socket.emit('getHost', newHost);
+      socket.broadcast.emit('getHost', newHost);
+    }
   }
 };
 
